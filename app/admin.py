@@ -1,13 +1,11 @@
 from django.contrib import admin
-from .models import library,author
+from .models import Library,Author
 
 # Register your models here.
-
 class AuthorAdmin(admin.ModelAdmin):
+    list_display=('name','email','gender')
+    search_fields=('name','email')
+    list_filter=('email','name','gender')
 
-    list_display = ('name','gender','category')
-    search_fields = ('name',)
-    list_filter = ('category','gender',)
-
-admin.site.register(library)
-admin.site.register(author,AuthorAdmin)
+admin.site.register(Library)
+admin.site.register(Author,AuthorAdmin)
